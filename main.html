@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700&display=swap');
+    </style> 
+    
+    
+  </head>
+  <body>
+    
+    <main>
+        <div class="modal-container" id="modalContainer">
+
+            <div class="modal" id="successModal">
+                <div class="modal-text">
+                    <p>YOU WON!</p>
+                    <h2>
+                        <i class="material-symbols-outlined">
+                            close
+                        </i>
+                        TAKES THE ROUND
+                    </h2>
+    
+                </div>
+                <div class="modal-buttons">
+                    <button class="grey-button" id="quitButton"> QUIT </button>
+                    <button class="ylw-button"> NEXT ROUND </button>
+                </div>
+    
+            </div>
+    
+            <div class="modal" id="restartModal">
+                <div class="modal-text">
+                    
+                    <h2>
+                        RESTART GAME?
+                    </h2>
+    
+                </div>
+                <div class="modal-buttons">
+                    <button class="grey-button" id="cancelButton"> NO, CANCEL </button>
+                    <button class="ylw-button" id="reset"> YES, RESTART </button>
+                </div>
+    
+            </div>
+
+        </div>
+        
+
+        <div class="container">
+            <header class="header">
+                <div class="logo">
+                    <i class="material-symbols-outlined">
+                        close
+                    </i>
+                    <i class="material-symbols-outlined">
+                        circle
+                    </i>
+                </div>
+                <div class="turn">
+                    <button disabled>
+                        <i class="material-symbols-outlined">
+                            close
+                        </i>
+                        Turn
+                    </button>
+                </div>
+                <div class="restart">
+                    <button id="restartButton">
+                        <i class="material-symbols-outlined">
+                            restart_alt
+                        </i>
+                    </button>
+                </div>
+            </header>
+
+            <div class="grid">
+                <div class="grid-row">
+                    <label class="grid-col" for="grid-box" id="one">
+                        <input type="checkbox" id="grid-box" >
+                        <i class="material-symbols-outlined">
+                            close
+                        </i>
+                    </label>
+
+                    <label class="grid-col" for="grid-box2" id="two">
+                        <input type="checkbox" id="grid-box2" >
+                        <i class="material-symbols-outlined">
+                            close
+                        </i>
+                    </label>
+
+                    <label class="grid-col" for="grid-box3">
+                        <input type="checkbox" id="grid-box3" >
+                        <i class="material-symbols-outlined">
+                            close
+                        </i>
+                    </label>
+                </div>
+                
+
+                <div class="grid-row">
+                    <label class="grid-col" for="grid-box4">
+                        <input type="checkbox" id="grid-box4" >
+                        <i class="material-symbols-outlined">
+                            close
+                        </i>
+                    </label>
+
+                    <label class="grid-col" for="grid-box5">
+                        <input type="checkbox" id="grid-box5" >
+                        <i class="material-symbols-outlined">
+                            close
+                        </i>
+                    </label>
+
+                    <label class="grid-col" for="grid-box6">
+                        <input type="checkbox" id="grid-box6" >
+                        <i class="material-symbols-outlined">
+                            close
+                        </i>
+                    </label>
+                </div>
+
+                <div class="grid-row">
+                    <label class="grid-col" for="grid-box7">
+                        <input type="checkbox" id="grid-box7" >
+                        <i class="material-symbols-outlined">
+                            close
+                        </i>
+                    </label>
+
+                    <label class="grid-col" for="grid-box8">
+                        <input type="checkbox" id="grid-box8" >
+                        <i class="material-symbols-outlined">
+                            close
+                        </i>
+                    </label>
+
+                    <label id="successButton" class="grid-col" for="grid-box9">
+                        <input type="checkbox" id="grid-box9" >
+                        <i class="material-symbols-outlined">
+                            close
+                        </i>
+                    </label>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="last-col">
+                    <p>X (You)</p>
+                    <p>14</p>
+                </div>
+                <div class="last-col">
+                    <p>Ties</p>
+                    <p>32</p>
+                </div>
+                <div class="last-col">
+                    <p>O (CPU)</p>
+                    <p>11</p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+
+    <script type="text/javascript" src="logic.js"></script> 
+  </body>
+</html>
