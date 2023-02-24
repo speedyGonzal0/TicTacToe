@@ -5,12 +5,20 @@ let result = 0;
 let turn = false;
 
 
-let board = [[0,0,0], [0,0,0], [0,0,0]];
+// let board = [[0,0,0], [0,0,0], [0,0,0]];
 
-let moves = [];
+let gameState = {
+    board: Array(9).fill(0),
+    userMoves: [],
+    cpuMoves: []
+}
+
+// let board = Array(9).fill(0);
+
+// let moves = [];
 
 
-console.log(board)
+// console.log(board)
 // console.log()
 
 const restartButton = document.getElementById("restartButton");
@@ -51,116 +59,52 @@ let boxes = document.querySelectorAll("label")
 // console.log(boxes)
 boxes.forEach( (box, index) => box.addEventListener("change", () => {
 
-    console.log(board)
-    if(index === 0){
-        board[0][0] = 1;
-        moves.push(1);
-    }
-
-    else if(index == 1){
-        board[0][1] = 1;
-        moves.push(2);
-    }
-
-    else if(index == 2){
-        board[0][2] = 1;
-        moves.push(3);
-    }
-
-    else if(index == 3){
-        board[1][0] = 1;
-        moves.push(4);
-    }
-    else if(index == 4){
-        board[1][1] = 1;
-        moves.push(5);
-    }
-    else if(index == 5){
-        board[1][2] = 1;
-        moves.push(6);
-    }
-    else if(index == 6){
-        board[2][0] = 1;
-        moves.push(7);
-    }
-
-    else if(index == 7){
-        board[2][1] = 1;
-        moves.push(8);
-    }
-    else if(index == 8){
-        board[2][2] = 1;
-        moves.push(9);
-    }
+    gameState.board[index] = 1;
+    console.log(gameState.board);
+    gameState.userMoves.push(index);
 
     box.querySelector("input").disabled = "true";
-    box.querySelector("input").style.cursor = "not allowed";
+    box.style.cursor = "not-allowed";
 
-    console.log(moves)
+    // console.log(moves)
 
-    cpuMove();
+    if((gameState.cpuMoves.length + gameState.userMoves.length) < gameState.board.length){
+        cpuMove();
+    }
+    else{
+        console.log("Game over")
+    }
+    
 
-    console.log(moves)
+    // console.log(moves)
 
 } ))
 
 
 function cpuMove(){
-    let move = generateRandom(1, 9);
+    let move = generateRandom(0, 8);
     console.log(move)
-    box = boxes[move-1];
-    // console.log(box)
-    moves.push(move);
-    // board[0][1] = 2;
+    box = boxes[move];
+    gameState.board[move] = 2;
+    console.log(gameState.board)
+    gameState.cpuMoves.push(move);
     box.querySelector("input").checked = "true";
     box.querySelector("input").disabled = "true";
+    box.style.cursor = "not-allowed";
     box.querySelector("i").innerText = "circle";
     box.querySelector("i").style.color = "#ffd60a";
 }
 
 
 function generateRandom(min, max) {
-    let num = Math.floor(Math.random() * (max - min + 1)) + min;
-
-    // let num = Math.random() * 10;
-    // while( num === 0){
-    //     num = Math.random() * 10;
-    // }
-
-    
-    if(!moves.length === 0){
-        for(let i = 0; i < moves.length; i++){
-            if(num === moves[i]){
-                generateRandom(min, max);
-                break;
-            }
+    let num; 
+    while(!num){
+        let x = Math.floor(Math.random() * (max - min)) + min;
+        
+        if( gameState.cpuMoves.indexOf(x) === -1 && gameState.userMoves.indexOf(x) === -1){
+            num = x;
         }
-        return num;
     }
-    else{
-        return num;
-    }
+    return num;        
 }
 
-
-function handleInput(){
-    // resetBoard();
-    playForUserAndCPU();
-
-
-    // document.getElementById("restartButton").style.backgroundColor = "red"
-}
-
-// function handleCPUMove(){
-//     for(let i = 0; i < board.length; i++){
-//         for(let j = 0; j < board[i].length; j++){
-//             // if(board[i][j] == user)
-
-
-//         }
-//     }    
-// }
-
-function playForUserAndCPU(){
-
-}
